@@ -22,7 +22,7 @@ include 'admin_sidebar.php';
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table" id="dataTables">
+                            <table class="table table-bordered" id="dataTables">
                                 <tbody>
                                     <tr class="">
                                         <td rowspan="2" class="img_cell">Degree image</td>

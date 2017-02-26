@@ -1,19 +1,12 @@
 <div class="panel-body">
     <div class="table-responsive"> 
-                                                                                         
-        
-        
         <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#modalblog">Create New Blog</button>
      <?php   
      include 'add_blog_tab.php';
      if(!empty($blogs)){ 
-            foreach($blogs as $blog){?>   
-        
-        
-        <table class="table" id="dataTables">
-            
+            foreach($blogs as $blog){?> 
+        <table class="table table-bordered" id="dataTables">
             <tbody>
-                 
                 <tr class="">
                     <td rowspan="2" class="img_cell">Blog image</td>
                     <td><?php print $blog->blog_title;?></td>

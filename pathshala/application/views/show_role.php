@@ -25,7 +25,7 @@ include 'admin_sidebar.php';
                             <?php if(!empty($userroles)){ 
                                 foreach($userroles as $role){?>
           
-                            <table class="table  " id="dataTables">
+                            <table class="table table-bordered " id="dataTables">
                                 <tbody>
                                     <tr class="">
                                         <td rowspan="2" class="img_cell">image</td>

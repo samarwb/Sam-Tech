@@ -22,7 +22,7 @@ include 'admin_sidebar.php';
                         <div class="table-responsive">
                             <?php if(!empty($blogs)){ 
                                 foreach($blogs as $blog){?>
-                            <table class="table" id="dataTables">
+                            <table class="table table-bordered" id="dataTables">
                                 <tbody>
                                     <tr class="">
                                         <td rowspan="2" class="img_cell">Blog image</td>

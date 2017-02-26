@@ -21,7 +21,7 @@ include 'admin_sidebar.php';
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form role="form" action="<?php print site_url('admin/insertuser');?>" method="post">
+                                <form role="form" action="<?php print site_url('admin/insertuser'); ?>" method="post">
                                     <div class="form-group">
                                         <label>First Name</label>
                                         <input required="true" name ="fname"  type="text" class="form-control">
@@ -47,17 +47,40 @@ include 'admin_sidebar.php';
                                         <input required="true" name ="cpassword"  type="password" class="form-control" disabled="disabled">
                                         <p class="help-block">Re-enter password again.</p>
                                     </div>
-                                    <div class="panel-heading">Select stream:</div>
-                                    <div class="panel-body">
-                                        <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn active">
-                                            <input type="checkbox" name='stream' value="marketing">
-                                            <i class="fa fa-square-o fa-2x"></i>
-                                            <i class="fa fa-check-square-o fa-2x"></i>
-                                            <span> Marketing Email</span>
-                                        </label>
-                                    </div> 
-                                        
+                                    <div class="form-group">
+                                        <label>Groups</lable>
+                                        <div class="panel-body">
+                                        <?php if(!empty($groups)){
+                                            foreach ($groups as $key=>$group){?>
+                                            
+                                                <div class="btn-group" data-toggle="buttons">
+                                                    <label class="btn <?php ($key==0)? print 'active': print ''; ?>">
+                                                        <input type="checkbox" value='<?php print $group->gid; ?>'>
+                                                        <i class="fa fa-square-o fa-2x"></i>
+                                                        <i class="fa fa-check-square-o fa-2x"></i>
+                                                        <span><?php print $group->group_name; ?></span>
+                                                    </label>
+                                                </div>
+                                        <?php }} else{ print 'No groups Available.' ;} ?>
+                                        </div>
+                                    </div>    
+                                    <div class="form-group"> 
+                                        <label>Roles</label>
+                                        <div class="panel-body">
+                                            <?php if(!empty($roles)){
+                                            foreach ($roles as $key=>$role){?>
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn <?php ($key==0)? print 'active': print ''; ?>">
+                                                    <input type="radio" name='gender1' value="<?php print $role->rid; ?>">
+                                                    <i class="fa fa-circle-o fa-2x"></i>
+                                                    <i class="fa fa-dot-circle-o fa-2x"></i> 
+                                                    <span><?php print $role->role_name; ?></span>
+                                                </label>
+                                            </div> 
+                                            <?php }} else{ print 'No roles Available.' ;} ?>
+                                        </div>    
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Mobile No.</label>
                                         <input required="true" name ="mobile"  type="text" class="form-control">
@@ -78,29 +101,29 @@ include 'admin_sidebar.php';
                                         <select class="form-control">
                                             <option value="india">India</option>
                                         </select>
-                                     </div>
+                                    </div>
                                     <div class="form-group" name="state">
                                         <label>State</label>
                                         <select class="form-control">
                                             <option value="karnataka">Karnataka</option>
                                         </select>
-                                     </div>
+                                    </div>
                                     <div class="form-group" name="city">
                                         <label>City</label>
                                         <select class="form-control">
                                             <option value="bangalore">Bangalore</option>
                                         </select>
-                                     </div>
+                                    </div>
                                     <div class="form-group">
                                         <label>Upload File</label>
                                         <input type="file" class="form-control"/>
-                                        
+
                                     </div>
                                     <div class="form-group">
                                         <label>User Status</label>
                                         <select name="userstatus" class="form-control">
-                                            <option value="<?php print STATUS_ACTIVE;?>">Active</option>
-                                            <option value="<?php print STATUS_BLOCK;?>">Block</option>
+                                            <option value="<?php print STATUS_ACTIVE; ?>">Active</option>
+                                            <option value="<?php print STATUS_BLOCK; ?>">Block</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Register</button>

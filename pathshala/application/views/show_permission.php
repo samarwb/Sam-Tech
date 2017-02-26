@@ -24,7 +24,7 @@ include 'admin_sidebar.php';
                         <div class="table-responsive">
                             <?php if(!empty($permission)){ 
                                 foreach($permission as $per){?>
-                            <table class="table " id="dataTables">
+                            <table class="table table-bordered" id="dataTables">
                                 <tbody>
                                     <tr class="">
                                         <td rowspan="2" class="img_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/permission.png" height="70" width="70"/></td>

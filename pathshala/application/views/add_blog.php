@@ -30,93 +30,19 @@ include 'admin_sidebar.php';
                     <div class="panel-heading">
                         Select stream:
                     </div>
-                    <div class="panel-body">
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="btn active">
-                                <input type="checkbox" name='stream' value="marketing">
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span> Marketing Email</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='email2'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x">
-                                </i><span> Alert Email</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='email3'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span> Account Email</span>
-                            </label>
-
-                            <label class="btn active">
-                                <input type="checkbox" name='email1'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span> Marketing Email</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='email2'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span> Alert Email</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='email3'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span> Account Email</span>
-                            </label>
-
-                            <label class="btn active">
-                                <input type="checkbox" name='science' >
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span>science</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='maths'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x">
-                                </i><span> maths</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='geography'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span> geography</span>
-                            </label>
-
-                            <label class="btn active">
-                                <input type="checkbox" name='computer science' >
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span>computer science</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='history'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span>socialism</span>
-                            </label>
-
-                            <label class="btn">
-                                <input type="checkbox" name='literature'>
-                                <i class="fa fa-square-o fa-2x"></i>
-                                <i class="fa fa-check-square-o fa-2x"></i>
-                                <span>literature</span>
-                            </label>
+                        <div class="panel-body">
+                            <?php if (!empty($groups)) {
+                            foreach ($groups as $key => $group) {?>
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn <?php ($key == 0) ? print 'active' : print ''; ?>">
+                                        <input type="checkbox" value='<?php print $group->gid; ?>'>
+                                            <i class="fa fa-square-o fa-2x"></i>
+                                            <i class="fa fa-check-square-o fa-2x"></i>
+                                            <span><?php print $group->group_name; ?></span>
+                                    </label>
+                                </div>
+                            <?php }} else { print 'No groups Available.';} ?>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

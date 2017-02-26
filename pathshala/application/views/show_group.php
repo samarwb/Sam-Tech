@@ -24,7 +24,7 @@ include 'admin_sidebar.php';
                         <div class="table-responsive">
                             <?php if(!empty($groups)){ 
                                 foreach($groups as $group){?>
-                            <table class="table" id="dataTables">
+                            <table class="table table-bordered" id="dataTables">
                                 <tbody>
                                     <tr class="">
                                         <td rowspan="2" class="img_cell">image</td>
