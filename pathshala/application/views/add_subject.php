@@ -24,12 +24,13 @@ include 'admin_sidebar.php';
                                 <form role="form" action="<?php print site_url('admin/insertsubject'); ?>" method="post">
                                     <div class="form-group">
                                         <label>Subject Name</label>
-                                        <input required="true" name ="subname"  type="text" class="form-control">
+                                        <input required="true" name ="subname" value="<?php print isset($single_sub)? $single_sub[0]->subject_name : ''; ?>" type="text" class="form-control">
+                                        <input type="hidden" name="subjectid" value="<?php print isset($single_sub)? $single_sub[0]->subject_id : ''; ?>" >
                                         <p class="help-block">Enter the subject name to display.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Subject Description</label>
-                                        <textarea name ="subdesc"  class="form-control group_parent_text_field"></textarea>
+                                        <textarea name ="subdesc"  class="form-control group_parent_text_field"><?php print isset($single_sub)? $single_sub[0]->subject_description : ''; ?></textarea>
                                         <p class="help-block">Enter description for this group.</p>
                                     </div>
                                     <div class="form-group">
@@ -38,9 +39,9 @@ include 'admin_sidebar.php';
                                     </div>
                                     <div class="form-group">
                                         <label>Status:</label>
-                                        <select name="blogstatus" class="form-control">
-                                            <option value="<?php print STATUS_ACTIVE; ?>">Active</option>
-                                            <option value="<?php print STATUS_BLOCK; ?>">Block</option>
+                                        <select name="substatus" class="form-control">
+                                            <option value="<?php print STATUS_ACTIVE; ?>" checked="<?php print isset($single_group) && $single_group[0]->status == STATUS_ACTIVE ? 'true' : ''  ?>">Active</option>
+                                            <option value="<?php print STATUS_BLOCK; ?>"checked="<?php print isset($single_group) && $single_group[0]->status == STATUS_BLOCK ? 'true' : ''  ?>">Block</option>
                                         </select>
                                     </div>
                                     <div class="btn-group">

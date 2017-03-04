@@ -26,21 +26,19 @@ include 'admin_sidebar.php';
                             <li><a  data-toggle="tab" href="#library">Libraries</a></li>
                             <li><a  data-toggle="tab" href="#faculty">Faculties</a></li>
                         </ul>
-                        <div class=" tab-content col-lg-10 ">
+                        <div class=" tab-content col-lg-9 ">
 <!--                        <div class="col-lg-6">-->
                                 <div id="attribute" class="tab-pane fade in active">
                                     <form role="form" action="<?php print site_url('admin/insertinst'); ?>" method="post">
                                         <div class="form-group" id="home">
-                                            <label>Institution Name</label>
-                                            <?php if(isset($institute)) { ?>
-                                            <input required="true" name ="instid" value="<?php print isset($institute) ? $institute[0]->institute_id : '';?>"  type="hidden" class="form-control">
-                                            <?php } ?> 
-                                            <input required= "true" name ="instname"  type="text" class="form-control">
+                                            <label>Institution Name</label>                                             
+                                            <input required="true" name ="instid" value="<?php print isset($single_inst)? $single_inst[0]->institute_id : '' ?>"  type="hidden" class="form-control">                                          
+                                            <input required= "true" name ="instname" value="<?php print isset($single_inst)? $single_inst[0]->institute_name : '' ?>" type="text" class="form-control">
                                             <p class="help-block">Enter the Institution name to display.</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Institution Description</label>
-                                            <textarea name ="instdesc"  class="form-control group_parent_text_field"></textarea>
+                                            <textarea name ="instdesc"  class="form-control group_parent_text_field"><?php print isset($single_inst)? $single_inst[0]->institute_description : '' ?></textarea>
                                             <p class="help-block">Enter description for this Institution.</p>
                                         </div>
                                         <div class="form-group">
@@ -83,9 +81,9 @@ include 'admin_sidebar.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <select name="inststatus">
-                                                <option value="<?php print STATUS_ACTIVE; ?>">Active</option>
-                                                <option value="<?php print STATUS_BLOCK; ?>">Block</option>
+                                            <select name="inststatus" class="form-control">
+                                                <option value="<?php print STATUS_ACTIVE;?>" checked="<?php print isset($single_inst) && $single_inst[0]->status == STATUS_ACTIVE ? 'true' : ''  ?>">Active</option>
+                                                <option value="<?php print STATUS_BLOCK;?>" checked="<?php print isset($single_inst) && $single_inst[0]->status == STATUS_BLOCK ? 'true' : ''  ?>">Block</option>
                                             </select>
                                         </div>
                                         <div class="btn-group">

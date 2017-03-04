@@ -21,18 +21,20 @@ include 'admin_sidebar.php';
                     <div class="panel-body">
                         <div class="table-responsive">
                             <?php if(!empty($blogs)){ 
+                                
                                 foreach($blogs as $blog){?>
-                            <table class="table table-bordered" id="dataTables">
+                            <table class="table" id="dataTables">
                                 <tbody>
                                     <tr class="">
-                                        <td rowspan="2" class="img_cell">Blog image</td>
-                                        <td><?php print $blog->blog_title;?></td>
-                                        <td class="edit_cell"><div class="admin_edit"></div></td>
-                                        <td class="del_cell"><div class="admin_delete"></div></td>
+                                        <td rowspan="2" class="img_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/blog.png" alt="" height="55" width="55" /></td>
+                                        <td colspan="2"><span class="title_style"><?php print ucfirst($blog->blog_title);?></td>
+                                        <td class="edit_cell"><a href="<?php print site_url('admin/addblog/'.$blog->blog_id); ?>"><div class="group_edit_class edit_class"></div></a></td>
+                                        <td class="del_cell"><div  blog_id="<?php print $blog->blog_id;?>" class="blog_delete_class delete_class"></div></td>
                                     </tr>
                                     <tr class="">
-                                        <td>created: <?php print date('d/m/y',$blog->created); ?></td>
-                                        <td colspan="2" class="time_cell">Last modified</td>                                        
+                                        <td>Created on:<span class="date_style"><?php print date('d/m/y h:i a',$blog->created); ?></span></td>
+                                        <td>Last modified:<span class="date_style"><?php print date('d/m/y h:i a',$blog->modified); ?></td> 
+                                        <td colspan="2"></td> 
                                     </tr>
                                 </tbody>
                             </table>

@@ -24,18 +24,18 @@ include 'admin_sidebar.php';
                         <div class="table-responsive">
                             <?php if(!empty($subjects)){ 
                                 foreach($subjects as $subject){?>
-                            <table class="table table-bordered" id="dataTables">
+                            <table class="table " id="dataTables">
                                 <tbody>
                                     <tr class="">
-                                        <td rowspan="2" class="img_cell">image</td>
-                                        <td><?php print $subject->subject_name;?></td>
-                                        <td class="edit_cell"></td>
-                                        <td class="del_cell"></td>
+                                        <td rowspan="2" class="img_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/subject.png" alt="" height="55" width="55" /></td>
+                                        <td colspan="2"><span class="title_style"><?php print ucfirst($subject->subject_name);?></td>
+                                        <td class="edit_cell"><a href="<?php print site_url('admin/addsubject/'.$subject->subject_id); ?>" ><div class="group_edit_class edit_class"></div></a></td>
+                                        <td class="del_cell"><div sub_id="<?php print $subject->subject_id ?>" class="subject_delete_class delete_class"></div></td>
                                     </tr>
                                     <tr class="">
-                                        <td><?php print date('d/m/y',$subject->created); ?></td>
-                                        <td colspan="2" class="time_cell">Last modified</td>
-                                        
+                                        <td>Created on:<span class="date_style"><?php print date('d/m/y h:i a',$subject->created); ?></span></td>
+                                        <td>Last modified:<span class="date_style"><?php print date('d/m/y h:i a',$subject->modified); ?></span></td>
+                                        <td colspan="2"></td>  
                                     </tr>
                                 </tbody>
                             </table>

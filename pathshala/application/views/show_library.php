@@ -24,18 +24,18 @@ include 'admin_sidebar.php';
                         <div class="table-responsive">
                             <?php if(!empty($library)){ 
                                 foreach($library as $lib){?>
-                            <table class="table table-bordered" id="dataTables">
+                            <table class="table" id="dataTables">
                                 <tbody>
                                     <tr class="">
-                                        <td rowspan="2" class="img_cell">Library image</td>
-                                        <td><?php print $lib->library_name;?></td>
-                                        <td class="edit_cell"><div class="admin_edit"></div></td>
-                                        <td class="del_cell"><div class="admin_delete"></div></td>
+                                        <td rowspan="2" class="img_cell"><div class="img_class"></div></td>
+                                        <td colspan="2"><span class="title_style"><?php print ucfirst($lib->library_name);?></span></td>
+                                        <td class="edit_cell"><a href="<?php print site_url('admin/addlibrary/'.$lib->library_id); ?>" ><div class="group_edit_class edit_class"></div></a></td>
+                                        <td class="del_cell"><div lib_id="<?php print $lib->library_id ?>" class="library_delete_class delete_class"></div></td>
                                     </tr>
                                     <tr class="">
-                                        <td>Created on <?php print date('d/m/y',$lib->created); ?></td>
-                                        <td colspan="2" class="time_cell">Last modified:<?php print date('d/m/y',$lib->modified); ?></td>
-                                        
+                                        <td>Created on:<span class="date_style"><?php print date('d/m/y h:i a',$lib->created); ?></span></td>
+                                        <td>Last modified:<span class="date_style"><?php print date('d/m/y h:i a',$lib->modified); ?></span></td>
+                                        <td colspan="2"></td>  
                                     </tr>
                                 </tbody>
                             </table>

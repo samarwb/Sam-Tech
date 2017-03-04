@@ -24,15 +24,13 @@ include 'admin_sidebar.php';
                                 <form role="form" action="<?php print site_url('admin/insertdegree');?>" method="post">
                                     <div class="form-group">
                                         <label>Degree Name</label>
-                                        <?php if(isset($degree)) { ?>
-                                        <input required="true" name ="degid" value="<?php print isset($degree) ? $degree[0]->degree_id : '';?>"  type="hidden" class="form-control">
-                                        <?php } ?>
-                                        <input required= "true" name ="degname"  type="text" class="form-control">
+                                        <input  name ="degid" value="<?php print isset($single_deg) ? $single_deg[0]->degree_id : '';?>"  type="hidden" class="form-control">                                        
+                                        <input required= "true" name ="degname" value="<?php print ucfirst(isset($single_deg)? $single_deg[0]->degree_name : '') ?>" type="text" class="form-control">
                                         <p class="help-block">Enter the degree name to display.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Degree Description</label>
-                                        <textarea name ="degdesc"  class="form-control group_parent_text_field"></textarea>
+                                        <textarea name ="degdesc"  class="form-control group_parent_text_field"><?php print ucfirst(isset($single_deg)? $single_deg[0]->degree_description : '') ?></textarea>
                                         <p class="help-block">Enter description for this degree.</p>
                                     </div>
                                     <div class="form-group">
@@ -41,13 +39,15 @@ include 'admin_sidebar.php';
                                     </div>
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select name="degstatus">
-                                            <option value="<?php print STATUS_ACTIVE;?>">Active</option>
-                                            <option value="<?php print STATUS_BLOCK;?>">Block</option>
+                                        <select name="degstatus" class="form-control">
+                                            <option value="<?php print STATUS_ACTIVE;?>" checked="<?php print isset($single_deg) && $single_deg[0]->status == STATUS_ACTIVE ? 'true' : ''  ?>">Active</option>
+                                            <option value="<?php print STATUS_BLOCK;?>" checked="<?php print isset($single_deg) && $single_deg[0]->status == STATUS_BLOCK ? 'true' : ''  ?>">Block</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Create</button>
-                                    <button type="reset" class="btn btn-success">Clear</button>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="reset" class="btn btn-primary">Clear</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

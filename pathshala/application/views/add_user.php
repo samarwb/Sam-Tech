@@ -24,17 +24,18 @@ include 'admin_sidebar.php';
                                 <form role="form" action="<?php print site_url('admin/insertuser'); ?>" method="post">
                                     <div class="form-group">
                                         <label>First Name</label>
-                                        <input required="true" name ="fname"  type="text" class="form-control">
+                                        <input required="true" name ="fname" value="<?php print ucfirst(isset($single_user) ? $single_user[0]->first_name : '')  ?>" type="text" class="form-control">
+                                        <input type="hidden" name="uid" value="<?php print isset($single_user) ? $single_user[0]->uid : ''; ?>">
                                         <p class="help-block">Enter First name to display.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input required="true" name ="lname"  type="text" class="form-control">
+                                        <input required="true" name ="lname" value="<?php print ucfirst(isset($single_user) ? $single_user[0]->last_name : '') ?>" type="text" class="form-control">
                                         <p class="help-block">Enter Last name to display.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input required="true" name ="email"  type="email" class="form-control">
+                                        <input required="true" name ="email" value="<?php print isset($single_user) ? $single_user[0]->email : '' ?>" type="email" class="form-control">
                                         <p class="help-block">Enter your email id (something@gmail.com).</p>
                                     </div>
                                     <div class="form-group">
@@ -44,7 +45,7 @@ include 'admin_sidebar.php';
                                     </div>
                                     <div class="form-group">
                                         <label>Confirm Password</label>
-                                        <input required="true" name ="cpassword"  type="password" class="form-control" disabled="disabled">
+                                        <input  name ="cpassword"  type="password" class="form-control" disabled="disabled">
                                         <p class="help-block">Re-enter password again.</p>
                                     </div>
                                     <div class="form-group">
@@ -83,34 +84,34 @@ include 'admin_sidebar.php';
 
                                     <div class="form-group">
                                         <label>Mobile No.</label>
-                                        <input required="true" name ="mobile"  type="text" class="form-control">
+                                        <input required="true" name ="mobile" value="<?php print isset($single_user) ? $single_user[0]->mobile : ''  ?>" type="tel" class="form-control">
                                         <p class="help-block">Enter active mobile number.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Date of Birth</label>
-                                        <input required="true" name ="dob"  type="date" class="form-control">
+                                        <input required="true" name ="dob" value="<?php print isset($single_user) ? $single_user[0]->dob : ''  ?>" type="date" class="form-control">
                                         <p class="help-block">Enter your Date of birth.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <textarea name ="address"  class="form-control group_parent_text_field"></textarea>
+                                        <textarea name ="address"  class="form-control group_parent_text_field"><?php print ucfirst(isset($single_user) ? $single_user[0]->address : '')?></textarea>
                                         <p class="help-block">Enter present address.</p>
                                     </div>
-                                    <div class="form-group" name="country">
+                                    <div class="form-group" >
                                         <label>Country</label>
-                                        <select class="form-control">
+                                        <select class="form-control" name="country">
                                             <option value="india">India</option>
                                         </select>
                                     </div>
-                                    <div class="form-group" name="state">
+                                    <div class="form-group">
                                         <label>State</label>
-                                        <select class="form-control">
+                                        <select class="form-control"  name="state">
                                             <option value="karnataka">Karnataka</option>
                                         </select>
                                     </div>
-                                    <div class="form-group" name="city">
+                                    <div class="form-group">
                                         <label>City</label>
-                                        <select class="form-control">
+                                        <select class="form-control"  name="city">
                                             <option value="bangalore">Bangalore</option>
                                         </select>
                                     </div>
@@ -122,12 +123,14 @@ include 'admin_sidebar.php';
                                     <div class="form-group">
                                         <label>User Status</label>
                                         <select name="userstatus" class="form-control">
-                                            <option value="<?php print STATUS_ACTIVE; ?>">Active</option>
-                                            <option value="<?php print STATUS_BLOCK; ?>">Block</option>
+                                            <option value="<?php print STATUS_ACTIVE; ?>" checked="<?php print isset($single_user) && $single_user[0]->status == STATUS_ACTIVE ? 'true' : ''  ?>">Active</option>
+                                            <option value="<?php print STATUS_BLOCK; ?>" checked="<?php print isset($single_user) && $single_user[0]->status == STATUS_BLOCK ? 'true' : ''  ?>">Block</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Register</button>
-                                    <button type="reset" class="btn btn-success">Clear All</button>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="reset" class="btn btn-primary">Clear</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

@@ -24,14 +24,14 @@ include 'admin_sidebar.php';
                                 <form role="form" action="<?php print site_url('admin/insertpermission');?>" method="post">
                                     <div class="form-group">
                                         <label>Permission Name</label>
-                                        <?php if(isset($permission)) { ?>
-                                        <input required="true" name ="perid" value="<?php print isset($permission) ? $permission[0]->per_id : '';?>"  type="hidden" class="form-control">
-                                        <?php } ?>
-                                        
-                                        <input required="true" name ="pername"  type="text" class="form-control">
+                                        <input required="true" name ="perid" value="<?php print isset($single_per) ? $single_per[0]->per_id : '' ?>"  type="hidden" class="form-control">
+                                        <input required="true" name ="pername" value="<?php print isset($single_per)? $single_per[0]->per_name : '' ?>" type="text" class="form-control">
                                         <p class="help-block">Enter Permission name.</p>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="reset" class="btn btn-primary">Clear</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

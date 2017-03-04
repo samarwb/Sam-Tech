@@ -25,18 +25,18 @@ include 'admin_sidebar.php';
                             <?php if(!empty($userroles)){ 
                                 foreach($userroles as $role){?>
           
-                            <table class="table table-bordered " id="dataTables">
+                            <table class="table  " id="dataTables">
                                 <tbody>
                                     <tr class="">
-                                        <td rowspan="2" class="img_cell">image</td>
-                                        <td><?php print $role->role_name;?></td>
-                                        <td class="edit_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/edit.png" height="25" width="25"/></td>
-                                        <td class="del_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/del.png" height="25" width="25"/></td>
+                                        <td rowspan="2" class="img_cell"><div class="img_class"></div></td>
+                                        <td colspan="2"><span class="title_style"><?php print ucfirst($role->role_name);?></td>
+                                        <td class="edit_cell"><a href="<?php print site_url('admin/addrole/'.$role->rid); ?>" ><div class="group_edit_class edit_class"></div></a></td>
+                                        <td class="del_cell"><div role_id="<?php print $role->rid ?>" class="role_delete_class delete_class"></div></td>
                                     </tr>
                                     <tr class="">
-                                        <td>Created: <?php print date('d/m/y',$role->created); ?></td>
-                                        <td colspan="2" class="time_cell">Last modified: <?php print date('d/m/y h:i',$role->modified); ?></td>
-                                        
+                                        <td>Created on:<span class="date_style"><?php print date('d/m/y h:i a',$role->created); ?></span></td>
+                                        <td>Last modified:<span class="date_style"><?php print date('d/m/y h:i a',$role->modified); ?></span></td>
+                                        <td colspan="2"></td> 
                                     </tr>
                                 </tbody>
                             </table>

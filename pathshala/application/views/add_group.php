@@ -24,10 +24,8 @@ include 'admin_sidebar.php';
                                 <form role="form" action="<?php print site_url('admin/insertgroup');?>" method="post">
                                     <div class="form-group">
                                         <label>Group Name</label>
-                                        <?php if(isset($groups)) { ?>
-                                        <input required="true" name ="groupid" value="<?php print isset($groups) ? $groups[0]->gid : '';?>"  type="hidden" class="form-control">
-                                        <?php } ?>
-                                        <input required="true" name ="groupname"  type="text" class="form-control">
+                                        <input required="true" name ="groupname" value="<?php print ucfirst(isset($single_group)? $single_group[0]->group_name : '' )?>" type="text" class="form-control">
+                                        <input name="groupid" type="hidden" value="<?php print isset($single_group) ? $single_group[0]->gid : ''  ?>" />
                                         <p class="help-block">Enter the group name to display.</p>
                                     </div>
                                     <div class="form-group">
@@ -35,15 +33,17 @@ include 'admin_sidebar.php';
                                         <input type="text" name ="groupparent"  class="form-control group_parent_text_field" />
                                         <p class="form-control-static">Enter the parent of this group.</p>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group ">
                                         <label>Group Status</label>
-                                        <select name="groupstatus">
-                                            <option value="<?php print STATUS_ACTIVE;?>" value="<?php print isset($groups) && ($groups[0]->status == STATUS_ACTIVE) ? 'selected="true"' : '';?>">Active</option>
-                                            <option value="<?php print STATUS_BLOCK;?>" value="<?php print isset($groups) && ($groups[0]->status == STATUS_BLOCK) ? 'selected="true"' : '';?>">Block</option>
+                                        <select name="groupstatus" class="form-control">
+                                            <option value="<?php print STATUS_ACTIVE;?>" checked="<?php print isset($single_group) && $single_group[0]->status == STATUS_ACTIVE ? 'true' : ''  ?>">Active</option>
+                                            <option value="<?php print STATUS_BLOCK;?>" checked="<?php print isset($single_group) && $single_group[0]->status == STATUS_BLOCK ? 'true' : ''  ?>">Block</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Create</button>
-                                    <button type="reset" class="btn btn-success">Clear</button>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="reset" class="btn btn-primary">Clear</button>
+                                    </div>
                                 </form>
                             </div>
                            

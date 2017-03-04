@@ -24,17 +24,18 @@ include 'admin_sidebar.php';
                         <div class="table-responsive">
                             <?php if(!empty($institute)){
                                 foreach ($institute as $inst){?>
-                            <table class="table table-bordered" id="dataTables">
+                            <table class="table " id="dataTables">
                                 <tbody>
                                     <tr class="">
-                                        <td rowspan="2" class="img_cell">Inst image</td>
-                                        <td><?php print $inst->institute_name;?></td>
-                                        <td class="edit_cell"><div class="admin_edit"></div></td>
-                                        <td class="del_cell"><div class="admin_delete"></div></td>
+                                        <td rowspan="2" class="img_cell"><div class="img_class"></div></td>
+                                        <td colspan="2"><span class="title_style"><?php print ucfirst($inst->institute_name);?></td>
+                                        <td class="edit_cell"><a href="<?php print site_url('admin/addinst/'.$inst->institute_id); ?>" ><div class="group_edit_class edit_class"></div></a></td>
+                                        <td class="del_cell"><div inst_id="<?php print $inst->institute_id; ?>" class="inst_delete_class delete_class"></div></td>
                                     </tr>
                                     <tr class="">
-                                        <td class="time_cell2">Created: <?php print date('d/m/y h:i:sa',$inst->created);?></td>
-                                        <td colspan="2" class="time_cell">Last modified: <?php print date('d/m/y h:i:sa',$inst->modified);?></td>                                        
+                                        <td>Created on:<span class="date_style"><?php print date('d/m/y h:i a',$inst->created); ?></span></td>
+                                        <td>Last modified:<span class="date_style"><?php print date('d/m/y h:i a',$inst->modified); ?></span></td>
+                                        <td colspan="2"></td>                                         
                                     </tr>
                                 </tbody>
                             </table>

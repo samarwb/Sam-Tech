@@ -27,15 +27,15 @@ include 'admin_sidebar.php';
                             <table class="table table-bordered" id="dataTables">
                                 <tbody>
                                     <tr class="">
-                                        <td rowspan="2" class="img_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/permission.png" height="70" width="70"/></td>
-                                        <td><?php print $per ->per_name;?></td>
-                                        <td class="edit_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/edit.png" height="25" width="25"/></td>
-                                        <td class="del_cell"><img src="<?php echo base_url(); ?>admin/assets/img/admin_img/del.png" height="25" width="25"/></td>
+                                        <td rowspan="2" class="img_cell"><div class="img_class"></div></td>
+                                        <td colspan="2"><span class="title_style"><?php print ucfirst($per ->per_name);?></td>
+                                        <td class="edit_cell"><a href="<?php print site_url('admin/addpermission/'.$per->per_id); ?>" ><div class="group_edit_class edit_class"></div></a></td>
+                                        <td class="del_cell"><div per_id="<?php print $per->per_id ?>" class="perm_delete_class delete_class"></div></td>
                                     </tr>
                                     <tr class="">
-                                        <td>Created: <?php print date('d/m/y',$per->created);?></td>
-                                        <td colspan="2" class="time_cell">Last modified: <?php print date('d/m/y h:i',$per->modified);?></td>
-                                        
+                                        <td>Created on:<span class="date_style"><?php print date('d/m/y h:i a',$per->created); ?></span></td>
+                                        <td>Last modified:<span class="date_style"><?php print date('d/m/y h:i a',$per->modified); ?></span></td>
+                                        <td colspan="2"></td> 
                                     </tr>
                                 </tbody>
                             </table>

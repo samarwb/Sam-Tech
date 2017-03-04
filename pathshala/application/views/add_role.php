@@ -23,14 +23,15 @@ include 'admin_sidebar.php';
                             <div class="col-lg-6">
                                 <form role="form" action="<?php print site_url('admin/insertrole');?>" method="post">
                                     <div class="form-group">
-                                        <label>Role Name</label>
-                                        <?php if(isset($role_id)) { ?>
-                                        <input required="true" name ="roleid" value="<?php print isset($role_id) ? $role_id[0]->rid : '';?>"  type="hidden" class="form-control">
-                                        <?php } ?>
-                                        <input required="true" name ="rolename"  type="text" class="form-control">
+                                        <label>Role Name</label>                                        
+                                        <input name ="roleid" value="<?php print isset($single_role) ? $single_role[0]->rid : '';?>"  type="hidden" class="form-control">                                       
+                                        <input required="true" name ="rolename" value="<?php print isset($single_role)? $single_role[0]->role_name : '' ?>"  type="text" class="form-control">
                                         <p class="help-block">Enter name of the role.</p>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="reset" class="btn btn-primary">Clear</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

@@ -14,6 +14,8 @@
         <!-- Core Scripts - Include with every page -->
         <script src="<?php echo base_url(); ?>admin/assets/plugins/jquery-1.10.2.js"></script>
         <script src="<?php echo base_url(); ?>admin/assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>admin/assets/scripts/scripts.js"></script>
+        <?php include 'jsconstants.php'; ?>
  
     </head>
     <body>

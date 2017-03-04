@@ -24,27 +24,28 @@ include 'admin_sidebar.php';
                                 <form role="form" action="<?php print site_url('admin/insertcategory');?>" method="post">
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <?php if(isset($category)) { ?>
-                                        <input required="true" name ="catid" value="<?php print isset($category) ? $category[0]->cat_id : '';?>"  type="hidden" class="form-control">
-                                        <?php } ?>
-                                        <input required= "true" name ="catname"  type="text" class="form-control">
+                                         
+                                        <input required="true" name ="catid" value="<?php print isset($single_cat)? $single_cat[0]->cat_id : '' ?>"  type="hidden" class="form-control">
+                                         
+                                        <input required= "true" name ="catname" value="<?php print isset($single_cat)? $single_cat[0]->cat_name : '' ?>" type="text" class="form-control">
                                         <p class="help-block">Enter the Category name to display.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Category Description</label>
-                                        <textarea name ="catdesc"  class="form-control group_parent_text_field"></textarea>
+                                        <textarea name ="catdesc"  class="form-control group_parent_text_field"><?php print isset($single_cat)? $single_cat[0]->cat_desc : '' ?></textarea>
                                         <p class="help-block">Enter description for this category.</p>
                                     </div>
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select name="catstatus">
-                                            <option value="<?php print STATUS_ACTIVE;?>">Active</option>
-                                            <option value="<?php print STATUS_BLOCK;?>">Block</option>
+                                            <option value="<?php print STATUS_ACTIVE;?>" checked="<?php print isset($single_group) && $single_group[0]->status == STATUS_ACTIVE ? 'true' : ''  ?>">Active</option>
+                                            <option value="<?php print STATUS_BLOCK;?>" checked="<?php print isset($single_group) && $single_group[0]->status == STATUS_BLOCK ? 'true' : ''  ?>">Block</option>
                                         </select>
                                     </div>
-                                    
-                                    <button type="submit" class="btn btn-primary">Create</button>
-                                    <button type="reset" class="btn btn-success">Clear</button>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="reset" class="btn btn-primary">Clear</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

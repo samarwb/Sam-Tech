@@ -296,21 +296,78 @@ table.dataTable thead .sorting:after {
     font-family: fontawesome;
     color: rgba(50,50,50,.5);
 }
-/*.table:hover {
-    -moz-box-shadow: 0 0 2 15px #888;
-    -webkit-box-shadow: 0 0  15px#888;
-    box-shadow: 0 0  15px #888;
-} */
-.table:hover {
-    box-shadow: 7px 7px 5px #888;
+
+.table{
+    
+    background-color:#F8FAFB; 
+    border-left: 15px #FE686A solid;
+    border-bottom: 2px #5B395A solid;
+     
 }
+/*td{
+    
+    border-left: 1px #75C5B8 solid;
+}*/
+
 .table:hover {
-    -moz-box-shadow: 7px 7px 5px #888; 
-    -webkit-box-shadow: 7px 7px 5px #888;
-    box-shadow: 7px 7px 5px #888;
+  -webkit-box-shadow: 1px 2px 39px -4px rgba(0,0,0,1);
+-moz-box-shadow: 1px 2px 39px -4px rgba(0,0,0,1);
+box-shadow: 1px 2px 39px -4px rgba(0,0,0,1);
 }
+
 .table{
     margin-top: 15px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+/*-------table css---------*/
+
+.edit_cell {
+    width: 4%;
+    text-align: center;
+   
+}
+
+.del_cell {
+    width: 4%;
+    text-align: center;
+}
+
+/*.time_cell {
+    max-width: 30%;
+}*/
+.img_cell{
+    width: 8%;
+}
+  
+.edit_class{
+    background: url('../img/admin_img/edit.png');
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+     
+}
+
+.delete_class{
+    background: url('../img/admin_img/del.png');
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    
+}
+
+.admin_menu_expand{
+    cursor: pointer;
+}
+
+.date_style{
+    font-style:italic;
+    font-size:  12px;
+}
+.title_style{
+    font-weight: bold;
 }
 
 /* Circle Buttons */
@@ -354,31 +411,7 @@ table.dataTable thead .sorting:after {
     margin: 15px 0;
 }
 
-/*-------table css---------*/
-
-.edit_cell {
-    width: 6%;
-    text-align: center;
-   
-}
-
-.del_cell {
-    width: 6%;
-    text-align: center;
-}
-
-.time_cell {
-    max-width: 30%;
-}
-.time_cell2 {
-    width: 30%;
-}
-
-.img_cell {
-    width: 10%;
-    border-radius: 50%;
-    
-}
+ 
 /*checkbox*/
 label input[type="checkbox"] ~ i.fa.fa-square-o{
     color: #808080;    display: inline;
@@ -412,6 +445,7 @@ label:hover input[type="radio"] ~ i.fa {
 color: #7AA3CC;
 }
 
+
 div[data-toggle="buttons"] label {
 display: inline-block;
 padding: 6px 12px;
@@ -443,6 +477,7 @@ div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active
 -webkit-box-shadow: none;
 box-shadow: none;
 }
+
 
 /*searchbox for institution*/
 
@@ -486,20 +521,76 @@ input[type="search"],input[type="search"] {
 .margin-dwn {
     margin-bottom: 20px;
 }
-.edit_class{
-    background: url('../img/admin_img/edit.png');
-    background-repeat: no-repeat;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+
+.panel-body{
+    
 }
-.delete_class{
-    background: url('../img/admin_img/del.png');
-    background-repeat: no-repeat;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+
+/*css for pagination*/
+
+#pagination{
+    margin: 40 40 0;
 }
-.admin_menu_expand{
-    cursor: pointer;
+
+ul.tsc_pagination li a 
+{ 
+    border:solid 1px; 
+    border-radius:3px; 
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    padding:6px 9px 6px 9px;
+}
+ul.tsc_pagination li 
+{
+    padding-bottom:1px;
+}
+ul.tsc_pagination li a:hover,
+ul.tsc_pagination li a.current
+{ 
+    color:#FFFFFF; 
+    box-shadow:0px 1px #EDEDED;
+    -moz-box-shadow:0px 1px #EDEDED;
+    -webkit-box-shadow:0px 1px #EDEDED; 
+}
+ul.tsc_pagination 
+{ 
+    margin:4px 0;
+    padding:0px; 
+    height:100%;
+    overflow:hidden; 
+    font:12px 'Tahoma';
+    list-style-type:none; 
+}
+ul.tsc_pagination li 
+{ 
+    float:left;
+    margin:0px;
+    padding:0px; 
+    margin-left:5px;
+}
+ul.tsc_pagination li a 
+{ 
+    color:black; 
+    display:block; 
+    text-decoration:none;
+    padding:7px 10px 7px 10px; 
+}
+ul.tsc_pagination li a img 
+{
+    border:none;
+}
+ul.tsc_pagination li a
+{ 
+    color:#0A7EC5;
+    border-color:#8DC5E6; 
+    background:#F8FCFF; 
+}
+ul.tsc_pagination li a:hover,
+ul.tsc_pagination li a.current
+{ 
+    text-shadow:0px 1px #388DBE;
+    border-color:#3390CA; 
+    background:#58B0E7; 
+    background:-moz-linear-gradient(top, #B4F6FF 1px, #63D0FE 1px, #58B0E7);
+    background:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0.02, #B4F6FF), color-stop(0.02, #63D0FE), color-stop(1, #58B0E7));
 }

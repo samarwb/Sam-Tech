@@ -3,17 +3,29 @@
 Class Admin_model_get extends CI_Model {
     
 
-    public function get_all_groups($group_id = NULL) {
+    public function get_all_groups($limit,$offset,$group_id = NULL) {   //article_list()  model name: article ,$group_id = NULL
         if(!empty($group_id)){
             $this->db->where('gid = '.$group_id);
         }
        $this->db->select('*');
        $this->db->from('groups');
        $this->db->where('status = '.STATUS_ACTIVE);
-       $this->db->order_by('modified');
+//       $this->db->order_by('modified');
+       $this->db->limit($limit, $offset);  
        $query = $this->db->get();
        return $query->result();
     }
+    
+    public function num_rows() {
+       
+       $this->db->select('*');
+       $this->db->from('groups');
+       $this->db->where('status = '.STATUS_ACTIVE);
+       $this->db->order_by('modified');
+       $query = $this->db->get();
+       return $query->num_rows();
+   }
+    
     public function get_all_blogs($blog_id = NULL) {
         if(!empty($blog_id)){
             $this->db->where('blog_id = '.$blog_id);
@@ -76,7 +88,7 @@ Class Admin_model_get extends CI_Model {
         }
         $this->db->select('*');
         $this->db->from('category');
-
+        $this->db->where('status = '.STATUS_ACTIVE);
         $this->db->order_by('modified');
         $querycat = $this->db->get();
         return $querycat->result();
@@ -87,7 +99,7 @@ Class Admin_model_get extends CI_Model {
         }
         $this->db->select('*');
         $this->db->from('institution');
-
+        $this->db->where('status = '.STATUS_ACTIVE);
         $this->db->order_by('modified');
         $queryinst = $this->db->get();
         return $queryinst->result();
@@ -103,6 +115,19 @@ Class Admin_model_get extends CI_Model {
         $queryinst = $this->db->get();
         return $queryinst->result();
     }
+    public function get_all_degree($deg_id = NULL) {
+        if(!empty($deg_id)){
+            $this->db->where('degree_id = '.$deg_id);
+        }
+        $this->db->select('*');
+        $this->db->from('degree');
+        $this->db->where('status = '.STATUS_ACTIVE);
+        $this->db->order_by('modified');
+        $querydeg = $this->db->get();
+        return $querydeg->result();
+    }
+    
+    
 }
 
 ?>
