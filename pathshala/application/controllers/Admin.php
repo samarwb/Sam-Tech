@@ -38,18 +38,6 @@ class Admin extends CI_Controller {
         $data = array('groups' => $groups);
         $this->load->view('show_group', $data);
     }
-    
-    public function groups($offset = 0){
-        $config["base_url"] = base_url() . "admin/showgroup";
-        $config["per_page"] = 5;
-        $config["total_rows"] = $this->admin_model_get->num_rows();
-        
-        $this->pagination->initialize($config);
-        $data = $this->admin_model_get->get_all_groups($config['per_page'], $this->uri->segment(3));
-        $this->load->view('show_group',$data);
-        
-    }
-    
 
     public function insertgroup() {
         $group_id = $this->input->post('groupid');
@@ -133,7 +121,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function adduser($user_id) {
+    public function adduser($user_id = NULL) {
         $groups = $this->admin_model_get->get_all_groups();
         $roles = $this->admin_model_get->get_all_roles();
         $data = array('groups' => $groups, 'roles' => $roles);
@@ -759,6 +747,59 @@ class Admin extends CI_Controller {
         }
     }
     
+     public function addforum($forum_id = NULL) {
+         if(!empty($forum_id)){
+             $forum = $this->admin_model_get->get_all_forum();
+             $data['single_for'] = $forum;
+         }
+        $this->load->view('add_forum',$data);
+    }
     
+    public function showforum() {
+        $forums = $this->admin_model_get->get_all_forum();
+        $data = array('forum'=>$forums);
+        $this->load->view('show_forum',$data);
+    }
+    
+    public function insertforum() {
+        $forum_title = $this->input->post('fortitle');
+        $forum_desc = $this->input->post('fordesc');
+        $forum_id = $this->input->post('forid');
+        $forum_status = $this->input->post('forstatus');
+        $this->form_validation->set_rules('fortitle', 'Forum title', 'trim|required');
+        $this->form_validation->set_rules('fordesc', 'Forum Description', 'trim|required');
+        
+        if($this->form_validation->run() == false){
+            $this->session->set_flashdata('status_message','forum update failed'.validation_errors());
+            redirect('admin/addforum');
+        }  else {
+            $data = array(
+                'forum_title' => $forum_title,
+                'forum_desc' => $forum_desc,
+                'status' => $forum_status,
+                'created' => time(),
+                'modified' => time()
+            );
+        }
+        
+        $query = $this->admin_model->admin_insert('forum',$data);
+        $this->session->set_flashdata('status message','forum update successfully.');
+        redirect('admin/showforum');
+        
+    }
+    public function deleteElementForum() {
+        $type = $this->input->post('type');
+        $id = $this->input->post('id');
+        if (!empty($type) && !empty($id)) {
+            $result = $this->admin_model->delete_content_forum($type, $id);
+            if ($result) {
+                print 'true';
+            } else {
+                print 'false';
+            }
+        } else {
+            print 'false';
+        }
+    }
 
 }

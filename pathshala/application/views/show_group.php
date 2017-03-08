@@ -40,15 +40,7 @@ include 'admin_sidebar.php';
                             <?php }} else{ print 'No groups Available.' ;} ?>
                             
                         </div>
-                        <div id="pagination">
-                            <ul class="tsc_pagination">
-                        
-                            <!-- Show pagination links -->
-                            <?php foreach ($links as $link) {
-                            echo "<li>". $link."</li>";
-                            } ?>
-                            </ul>    
-                        </div>        
+                             
                     </div>
                 </div>
                 <!--End Advanced Tables -->

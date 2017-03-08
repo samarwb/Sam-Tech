@@ -133,6 +133,23 @@ public function admin_update($table_name , $update_data , $conditions) {
         }
         return $result;
     }
+    
+    public function delete_content_forum($table_name,$id){
+        if($table_name == 'forum'){
+            $conditions = array('forum_id'=>$id);
+        }
+        $result = TRUE;
+        if(!empty($conditions)){
+            $this->db->where($conditions); //get the results
+            $result = $this->db->delete($table_name);
+        }
+        return $result;
+    }
+   
+    
+    
+    
+    
 }
 
 ?>

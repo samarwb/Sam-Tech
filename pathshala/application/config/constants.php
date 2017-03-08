@@ -105,8 +105,10 @@ define('PRODUCT_DEFAULT_IMAGE', "comingsoon.png");
 
 define('ADMIN_ID', 1);
 
-define('EMAIL_FORM_ID', 'ivendorconnect@gmail.com');
+define('EMAIL_FORM_ID', 'samar.samtech@gmail.com');
 
 define('EMAIL_TO_ID', 'ivendorconnect@gmail.com');
 
 define('GOOGLE_API_APP_KEY', 'AIzaSyB62_xjCXqRpG4lGtXhGuFjVDDjYb8sOoA');
+
+define('USER_UNFIELD_VALUE', 'Unfield');

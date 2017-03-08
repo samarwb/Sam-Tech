@@ -265,3 +265,28 @@ function deleteElementUser(type,id){
         });
     }
 }
+
+$(function(){
+    $('.forum_delete_class').click(function(){
+       if(confirm('Do you want to delete this Forum ? ')){
+           var forum_id = $(this).attr('for_id');
+           deleteElementForum('forum',forum_id);
+       } 
+    });
+});
+function deleteElementForum(type,id){
+    if((type !== '' || type !== undefined) && (id !== '' || id !== undefined)){
+        $.ajax({
+            url: base_url+'/admin/deleteElementForum', 
+            data:{type:type,id:id},
+            type:"POST",
+            async:false,
+            success: function(result){
+                window.location.href = window.location.href;
+            },
+            error: function(e){
+                alert('Opps! some error occurs , delete action cannot be completed. Please try again');
+            }
+        });
+    }
+}
