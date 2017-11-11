@@ -118,6 +118,10 @@ php_value suhosin.request.max_vars 5000
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} !=/favicon.ico
   RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+
+
+  RewriteCond $1 !^(index\.php)
+  RewriteRule ^(.*)$ /index.php/$1 [L]
 </IfModule>
 
 # $Id$

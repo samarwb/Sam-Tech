@@ -101,7 +101,7 @@
 <div class="row recent_work_wrapper">
 	<h3 class="span12" style="text-align:center">My recent work <small>view all works </small></h3>
         <?php foreach($albums as $album) {
-            $image_path = !empty($album->file_path)? ALBUM_IMAGE_DIRECTORY.$album->file_path : ALBUM_DEFAULT_IMAGE; ?>
+            $image_path = !empty($album->file_path)? $album->file_path : ALBUM_DEFAULT_IMAGE; ?>
 	<div class="span4">
 		<div class="thumbnail">
 			<h4><?php print $album->album_name; ?></h4>
