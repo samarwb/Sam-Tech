@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','common_mail','common_settings','files_helper');
+$autoload['helper'] = array('url','common_mail','common_settings','files_helper','aws_s3');
 
 /*
 | -------------------------------------------------------------------

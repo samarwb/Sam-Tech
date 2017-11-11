@@ -119,7 +119,7 @@ define('INSTITUTION_IMAGE_DIRECTORY', 'images/institution/');
 
 define('ALBUM_DEFAULT_IMAGE', '/images/default/album.png');
 
-define('ALBUM_IMAGE_DIRECTORY', 'images/institution_album/');
+define('ALBUM_IMAGE_DIRECTORY', 'institution_album/images/');
 
 define('IMAGE_FILE_SIZE', 5000000);
 

@@ -41,14 +41,14 @@ function upload_files($table_name,$reference_id){
     foreach ($all_files as $file_key => $file) {
         if (!empty($file)) {
             $count++;
-            $file_type = pathinfo($file, PATHINFO_EXTENSION);
+            $file_details = pathinfo($file);
             $file_temp_path = $_FILES['images']['tmp_name'][$file_key];
-            $file_name = $file;
+            $file_name = $file_details['filename'].time().'.'.$file_details['extension'];
             $file_size = $_FILES['images']['size'][$file_key];
-            $image_path = file_image_path($table_name, $file_name, $file_type, $file_size, $file_temp_path,$table_name);
-            if (!empty($image_path['sucess'][0])) {
+            $image_path = file_image_path($table_name, $file_name, $file_details['extension'], $file_size, $file_temp_path,$table_name);
+            if (!empty($image_path['success'][0])) {
                     $file_data = array(
-                    'file_path'=>$image_path['sucess'][0],
+                    'file_path'=>$image_path['success'][0],
                     'reference_id'=>$reference_id,
                     'reference_type'=>$table_name,
                     'file_count'=>$count
@@ -62,18 +62,12 @@ function upload_files($table_name,$reference_id){
 
 function file_image_path($table_name, $file_name, $file_type, $file_size, $file_temp_path) {
     
-    $directory_path = FILE_IMAGE_DIRECTORY . '/'.$table_name.'/';
+    //$directory_path = FILE_IMAGE_DIRECTORY . '/'.$table_name.'/';
+    $directory_path = $table_name.'/images/';
     $uploadOk = 1;
     $file_upload_info = array();
     $target_file = $directory_path . basename($file_name);
 
-    // Check if file already exists
-
-    if (file_exists($target_file)) {
-        $file_upload_info['sucess'][] = $file_name;
-        $file_upload_info['error'][] = "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
     // Check file size
     if ($file_size > IMAGE_FILE_SIZE) {
         $file_upload_info['error'][] = "Sorry, your file is too large.";
@@ -89,15 +83,29 @@ function file_image_path($table_name, $file_name, $file_type, $file_size, $file_
         $file_upload_info['error'][] = "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
     } else {
-        if (!is_dir($directory_path)) {
-            mkdir($directory_path, 0777, TRUE);
-        }
-        $file_result = move_uploaded_file($file_temp_path, $target_file);
-        if ($file_result == true) {
-            $file_upload_info['sucess'][] = $file_name;
+
+        $file_result = upload_file_to_s3($file_temp_path, $target_file);
+        if (!empty($file_result->uri)) {
+            $file_upload_info['success'][] = $file_result->uri;
         } else {
             $file_upload_info['error'][] = "Sorry, there was an error uploading your file.";
         }
     }
     return $file_upload_info;
+}
+
+function upload_file_to_s3($file,$destination){
+    $final_file = new stdClass ();
+    $final_file->uri = upload_to_cloud ($file, $destination );
+    return $final_file;
+}
+
+function get_file_full_path($path){
+    $full_path =  getbucket_zone_url().$path;
+    return $full_path;
+}
+
+function delete_files_from_s3($file){
+    $return = remove_from_cloud($file);
+    return $return;
 }

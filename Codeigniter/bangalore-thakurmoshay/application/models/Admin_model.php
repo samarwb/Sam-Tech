@@ -168,6 +168,11 @@ Class Admin_model extends CI_Model {
                 $conditions = array('deg_typ_id' => $id);
 
                 break;
+            case 'institution_album':
+                $conditions = array('album_id' => $id);
+                $this->delete_files($table_name,$id,ALBUM_IMAGE_DIRECTORY);
+
+                break;
 
             default:
                 break;
@@ -180,11 +185,15 @@ Class Admin_model extends CI_Model {
         return $result;
     }
 
-    public function delete_files($table_name, $id) {
+    public function delete_files($table_name, $id,$s3_image_directory = NULL) {
         $conditions = array(
             'reference_type' => $table_name,
             'reference_id' => $id
         );
+        $all_files = $this->admin_model_get->get_all_files($conditions);
+        foreach($all_files as $files){
+            delete_files_from_s3(ALBUM_IMAGE_DIRECTORY.basename($files->file_path));
+        }
         $result = FALSE;
         if (!empty($conditions)) {
             $this->db->where($conditions); //get the results

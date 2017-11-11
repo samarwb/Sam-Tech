@@ -97,6 +97,13 @@ $(function(){
             deleteElement('degree_type',degtyp_id);
         }     
     });
+
+    $('.album_delete_class').click(function(){
+        if(confirm('Do you want to delete the album ? ')){
+            var album_id = $(this).attr('album_id');
+            deleteElement('institution_album',album_id);
+        }
+    });
     
     
 });

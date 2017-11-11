@@ -2,7 +2,7 @@
     <div class="uploaded_images_wrapper">
     <?php if(!empty($files)){ 
      foreach ($files as $key => $file) {?>
-        <div class='upload_images'><img src='<?php print base_url().'images/'.$file->reference_type.'/'.$file->file_path;?>'><div class='upload_image_close'>X</div></div>
+        <div class='upload_images'><img src='<?php print $file->file_path;?>'><div class='upload_image_close'>X</div></div>
    <?php } }?>
     </div>
     <div class="image_upload_file_wrapper">
